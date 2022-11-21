@@ -1,0 +1,19 @@
+registered-ids: [dragon_sword]
+
+
+dragon_sword:
+  name: The Dragon’s Sword
+  damage: 80
+  strength: 50
+  crit-damage: 20
+  crit-chance: 10
+  ability:
+    name: Ender Rage
+    mana-cost: 100
+  rarity: 5
+  type: sword
+  material: NETHERITE_SWORD
+
+
+
+

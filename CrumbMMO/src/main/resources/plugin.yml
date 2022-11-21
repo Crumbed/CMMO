@@ -1,0 +1,21 @@
+name: CrumbMMO
+version: '${project.version}'
+main: com.crumbed.CrumbMMO
+api-version: 1.19
+prefix: §aCrumbMMO
+authors: [ Crumbs ]
+description: CrumbSMP Custom Plugin
+depends: [LuckPerms, HeadDatabase]
+commands:
+  stats:
+    description: stats
+    usage: /<command>
+  cgive:
+    description: cgive
+    usage: /<command>
+  creload:
+    description: creload
+    usage: /<command>
+  trails:
+    description: trails
+    usage: /<command>
