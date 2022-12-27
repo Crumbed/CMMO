@@ -1,5 +1,10 @@
 package com.crumbed.events;
 
+import com.comphenix.protocol.PacketType;
+import com.comphenix.protocol.events.ListenerPriority;
+import com.comphenix.protocol.events.PacketAdapter;
+import com.comphenix.protocol.events.PacketContainer;
+import com.comphenix.protocol.events.PacketEvent;
 import com.crumbed.CrumbMMO;
 import com.crumbed.enchants.CustomEnchants;
 import com.crumbed.stats.Stats;
@@ -22,6 +27,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
+import static com.crumbed.CrumbMMO.manager;
 import static com.crumbed.CrumbMMO.statsManager;
 import static com.crumbed.utils.Namespaces.*;
 
@@ -47,6 +53,7 @@ public class Damage implements Listener {
         if (!(event.getEntity() instanceof LivingEntity)) return;
         if (event.getEntity() instanceof ArmorStand) return;
         if (!(event.getDamager() instanceof Player)) {
+
             Entity damager = event.getDamager();
             if (!damager.getPersistentDataContainer().has(idKey, PersistentDataType.STRING)) return;
             PersistentDataContainer damagerStats = damager.getPersistentDataContainer();
@@ -107,13 +114,13 @@ public class Damage implements Listener {
         finalDmg = (float) ((int) (finalDmg + 0.5));
         if (player.getInventory().getItemInMainHand().hasItemMeta()) {
             if (player.getInventory().getItemInMainHand().getItemMeta().hasEnchant(CustomEnchants.LIFE_STEAL)) {
-                int healthToAdd = (int) ((int) finalDmg * (0.02 * player.getInventory().getItemInMainHand().getItemMeta().getEnchantLevel(CustomEnchants.LIFE_STEAL)));
+                int healthToAdd = (int) ((int) finalDmg * (0.01 * player.getInventory().getItemInMainHand().getItemMeta().getEnchantLevel(CustomEnchants.LIFE_STEAL)));
                 if ((player.getHealth() + healthToAdd) > player.getAttribute(Attribute.GENERIC_MAX_HEALTH).getBaseValue()) player.setHealth(player.getAttribute(Attribute.GENERIC_MAX_HEALTH).getBaseValue());
                 else player.setHealth(player.getHealth() + healthToAdd);
             }
             if (player.getInventory().getItemInMainHand().getItemMeta().hasEnchant(CustomEnchants.FIRST_STRIKE)) {
                 if (entity.getHealth() == entity.getAttribute(Attribute.GENERIC_MAX_HEALTH).getBaseValue())
-                    finalDmg += finalDmg * (0.5 * player.getInventory().getItemInMainHand().getItemMeta().getEnchantLevel(CustomEnchants.LIFE_STEAL));
+                    finalDmg += finalDmg * (0.25 * player.getInventory().getItemInMainHand().getItemMeta().getEnchantLevel(CustomEnchants.LIFE_STEAL));
             }
         }
 
@@ -125,7 +132,7 @@ public class Damage implements Listener {
         String dmgDisp;
 
         if (crit) dmgDisp = ChatColor.GOLD+""+ChatColor.MAGIC+"- "+color+finalDmg+ChatColor.GOLD+""+ChatColor.MAGIC+" -";
-        else dmgDisp = color+""+finalDmg;
+        else dmgDisp = color+""+(int)finalDmg;
 
 
         Location spawnLocation;
@@ -157,6 +164,19 @@ public class Damage implements Listener {
         );
 
         event.setDamage(finalDmg);
+
+        manager.addPacketListener(new PacketAdapter(plugin, ListenerPriority.HIGH, PacketType.Play.Server.WORLD_PARTICLES) {
+            @Override
+            public void onPacketSending(PacketEvent event) {
+                PacketContainer packet = event.getPacket();
+                if (event.getPacketType() == PacketType.Play.Server.WORLD_PARTICLES) {
+                    if (packet.getEntityModifier(event).read(0) instanceof Player) {
+                        Player p = (Player) packet.getEntityModifier(event).read(0);
+                        packet.getIntegers().write(0, 0);
+                    }
+                }
+            }
+        });
 
     }
 

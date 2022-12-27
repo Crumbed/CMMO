@@ -55,7 +55,7 @@ public class ResetStats {
         int cDmg = data.get(critDmgKey, PersistentDataType.INTEGER);
         float cChance = data.get(critChanceKey, PersistentDataType.FLOAT);
 
-        statsManager.updateStats(playerToReset.getUniqueId(), new Stats(baseHealth, baseDefense, defense, baseMana, maxMana, mana, dmg, str, cDmg, cChance, 0.1f));
+        statsManager.updateStats(playerToReset.getUniqueId(), new Stats(baseHealth, baseDefense, defense, baseMana, maxMana, mana, dmg, str, cDmg, cChance, 0.1f, 0f));
 
         sender.sendMessage(ChatColor.GREEN + "Successfully reset "+args[2]+"'s stats.");
 

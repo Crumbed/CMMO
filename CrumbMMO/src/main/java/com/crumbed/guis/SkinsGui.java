@@ -11,11 +11,11 @@ import java.util.HashMap;
 
 public class SkinsGui {
 
-    private Inventory inv;
+    public static Inventory INV;
     private HashMap<String, String> skins;
 
     public SkinsGui() {
-        inv = Bukkit.createInventory(null, 27, ChatColor.BLACK+""+ChatColor.BOLD+"Skin Anvil");
+        INV = Bukkit.createInventory(null, 27, ChatColor.BLACK+""+ChatColor.BOLD+"Skin Anvil");
         ItemStack menu_glass = new ItemStack(Material.BLACK_STAINED_GLASS_PANE);
         ItemMeta meta = menu_glass.getItemMeta();
         meta.setDisplayName(ChatColor.BLACK+".");
@@ -28,7 +28,7 @@ public class SkinsGui {
                 buttonMeta.setDisplayName(ChatColor.GREEN+"Apply Skin");
                 applyButton.setItemMeta(buttonMeta);
 
-                inv.setItem(i, applyButton);
+                INV.setItem(i, applyButton);
                 continue;
             }
             if (i == 16) {
@@ -37,11 +37,11 @@ public class SkinsGui {
                 resultMeta.setDisplayName(ChatColor.RED+"No Result");
                 result.setItemMeta(resultMeta);
 
-                inv.setItem(i, result);
+                INV.setItem(i, result);
                 continue;
             }
 
-            inv.setItem(i, menu_glass);
+            INV.setItem(i, menu_glass);
 
         }
     }

@@ -6,13 +6,17 @@ import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Material;
 import org.bukkit.attribute.Attribute;
+import org.bukkit.attribute.AttributeModifier;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.scheduler.BukkitRunnable;
+import org.checkerframework.checker.units.qual.C;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -27,6 +31,7 @@ public class StatsManager {
     private CrumbMMO plugin;
     private HashMap<UUID, Stats> entityStats = new HashMap<>();
     public HashMap<UUID, Stats> playerAddonStats = new HashMap<>();
+    public HashMap<Player, Double> playerHealthScales = new HashMap<>();
     public StatsManager (CrumbMMO plugin) {
         this.plugin = plugin;
         regen(plugin);
@@ -51,25 +56,19 @@ public class StatsManager {
         data.set(critDmgKey, PersistentDataType.INTEGER, stats.getCritDamage());
         data.set(critChanceKey, PersistentDataType.FLOAT, stats.getCritChance());
 
-        //int baseMana = data.get(baseManaKey, PersistentDataType.INTEGER);
         int maxMana = data.get(maxManaKey, PersistentDataType.INTEGER);
         int mana = data.get(manaKey, PersistentDataType.INTEGER);
-        //int baseHealth = data.get(baseHealthKey, PersistentDataType.INTEGER);
-        int maxHealth = (int) Bukkit.getPlayer(uuid).getAttribute(Attribute.GENERIC_MAX_HEALTH).getBaseValue();
-        float speed = (float) Bukkit.getPlayer(uuid).getAttribute(Attribute.GENERIC_MOVEMENT_SPEED).getBaseValue();
-        //int baseDefense = data.get(baseDefenseKey, PersistentDataType.INTEGER);
         int defense = data.get(defenseKey, PersistentDataType.INTEGER);
+        float atkSpeed = 4.0f - stats.getAtkSpeed();
 
-        if (maxHealth <= 100) {
-            Bukkit.getPlayer(uuid).setHealthScale(20);
-        } else if (maxHealth > 1000) {
-            Bukkit.getPlayer(uuid).setHealthScale(40);
-        } else {
-            Bukkit.getPlayer(uuid).setHealthScale(maxHealth / 50.0 + 20);
+        if (Bukkit.getPlayer(uuid).getInventory().getItemInMainHand().getType() != Material.AIR) {
+            ItemStack item = Bukkit.getPlayer(uuid).getInventory().getItemInMainHand();
+            AttributeModifier modifier = new AttributeModifier(UUID.randomUUID(), "yes", (4.0 - atkSpeed), AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HAND);
+            item.getItemMeta().addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, modifier);
         }
-        if (Bukkit.getPlayer(uuid).getHealthScale() % 2 == 1) Bukkit.getPlayer(uuid).setHealthScale(Bukkit.getPlayer(uuid).getHealthScale() + 1);
-        Bukkit.getPlayer(uuid).getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(maxHealth);
-        Bukkit.getPlayer(uuid).getAttribute(Attribute.GENERIC_MOVEMENT_SPEED).setBaseValue(speed);
+
+        Bukkit.getPlayer(uuid).getAttribute(Attribute.GENERIC_ATTACK_SPEED).setBaseValue(4.0);
+
         TextComponent actionBar = new TextComponent(
                 "     "+ChatColor.GREEN+""+defense+"     "+ChatColor.AQUA+""+mana+"/"+maxMana
         );
@@ -148,6 +147,7 @@ public class StatsManager {
                         int def = 0;
                         int mana = 0;
                         float speed = 0.0f;
+                        float atkSpeed = 0.0f;
 
                         if (customMeta.has(dmgKey, PersistentDataType.INTEGER))         dmg = customMeta.get(dmgKey, PersistentDataType.INTEGER);
                         if (customMeta.has(strKey, PersistentDataType.INTEGER))         str = customMeta.get(strKey, PersistentDataType.INTEGER);
@@ -157,12 +157,14 @@ public class StatsManager {
                         if (customMeta.has(defenseKey, PersistentDataType.INTEGER))     def = customMeta.get(defenseKey, PersistentDataType.INTEGER);
                         if (customMeta.has(manaKey, PersistentDataType.INTEGER))        mana = customMeta.get(manaKey, PersistentDataType.INTEGER);
                         if (customMeta.has(speedKey, PersistentDataType.FLOAT))         speed = customMeta.get(speedKey, PersistentDataType.FLOAT);
+                        if (customMeta.has(atkSpeedKey, PersistentDataType.FLOAT))      atkSpeed = customMeta.get(atkSpeedKey, PersistentDataType.FLOAT);
 
                         if (meta.hasEnchant(CustomEnchants.HEALTH))                     hp += (15 * meta.getEnchantLevel(CustomEnchants.HEALTH));
                         if (meta.hasEnchant(CustomEnchants.CPROTECTION))                def += (5 * meta.getEnchantLevel(CustomEnchants.CPROTECTION));
                         if (meta.hasEnchant(CustomEnchants.SPEED))                      speed += (0.025 * meta.getEnchantLevel(CustomEnchants.SPEED));
                         if (meta.hasEnchant(CustomEnchants.BIGBRAIN))                   mana += (5 * meta.getEnchantLevel(CustomEnchants.BIGBRAIN));
                         if (meta.hasEnchant(CustomEnchants.CSHARPNESS))                 dmg += (dmg * (0.05 * meta.getEnchantLevel(CustomEnchants.CSHARPNESS)));
+                        if (meta.hasEnchant(CustomEnchants.CRITICAL))                   cDmg += (10 * meta.getEnchantLevel(CustomEnchants.CRITICAL));
 
                         if (dmg != 0)           addStats.setDamage(addStats.getDamage()+dmg);
                         if (str != 0)           addStats.setStrength(addStats.getStrength()+str);
@@ -172,14 +174,32 @@ public class StatsManager {
                         if (def != 0)           addStats.setDefense(addStats.getDefense()+def);
                         if (mana != 0)          addStats.setMana(addStats.getMana()+mana);
                         if (speed != 0)         addStats.setSpeed(addStats.getSpeed()+speed);
+                        if (atkSpeed != 0)      addStats.setAtkSpeed(addStats.getAtkSpeed()+atkSpeed);
 
                     }
+
+                    int maxHealth = (int) player.getAttribute(Attribute.GENERIC_MAX_HEALTH).getBaseValue();
+                    double healthScale = 20;
+
+                    if (maxHealth <= 100) {
+                        healthScale = 20;
+                    } else if (maxHealth > 1000) {
+                        healthScale = 40;
+                    } else {
+                        healthScale = maxHealth / 50.0 + 20;
+                    }
+                    if (healthScale % 2 > 0 && !(maxHealth % 100 == 50)) {
+                        healthScale = Math.round(healthScale / 2) * 2;
+                    }
+
+
+                    if (playerHealthScales.containsKey(player) && !playerHealthScales.get(player).equals(healthScale)) { player.setHealthScale(healthScale); playerHealthScales.put(player, healthScale); }
+                    //player.sendMessage(""+healthScale+", "+playerHealthScales.get(player));
 
                     if (!playerAddonStats.get(player.getUniqueId()).equals(addStats)) {
                         updateStats(player.getUniqueId(), entityStats.get(player.getUniqueId()));
                         playerAddonStats.put(player.getUniqueId(), addStats);
                     }
-
 
 
                 }

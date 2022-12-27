@@ -55,8 +55,6 @@ public class Effects {
                 o2 = second.clone();
                 o1 = o1.clone().subtract(pLoc);
                 o2 = o2.clone().subtract(pLoc);
-                //first = loc.clone().add(Math.cos(var), (Math.sin(var)/2)+0.5, Math.sin(var));
-                //                second = loc.clone().add(Math.cos(var + Math.PI), (Math.sin(var)/2)+0.5, Math.sin(var + Math.PI));
 
                 List<Player> packetRecipients = new ArrayList<>();
                 packetRecipients.add(player);
@@ -159,7 +157,6 @@ public class Effects {
                             ParticleTypes.FLAME, true, second.getX(), second.getY(), second.getZ(), (float)o2.getX(), 0.8f, (float)o2.getZ(), 0.05F, 0
                     ), player);
                 }
-
 
             }
         }, 0, 1);

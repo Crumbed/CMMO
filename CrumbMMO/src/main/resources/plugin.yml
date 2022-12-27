@@ -5,7 +5,11 @@ api-version: 1.19
 prefix: §aCrumbMMO
 authors: [ Crumbs ]
 description: CrumbSMP Custom Plugin
-depends: [LuckPerms, HeadDatabase]
+depend:
+- LuckPerms
+- HeadDatabase
+- ProtocolLib
+- CustomCrafting
 commands:
   stats:
     description: stats
@@ -18,4 +22,13 @@ commands:
     usage: /<command>
   trails:
     description: trails
+    usage: /<command>
+  skins:
+    description: skins
+    usage: /<command>
+  craft:
+    description: craft
+    usage: /<command>
+  carft:
+    description: craft
     usage: /<command>

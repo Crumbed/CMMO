@@ -28,6 +28,8 @@ public class Namespaces {
     public static NamespacedKey nameKey = new NamespacedKey(CrumbMMO.getInstance(), "name");
     public static NamespacedKey skullId = new NamespacedKey(CrumbMMO.getInstance(), "skull-id");
     public static NamespacedKey preventPlace = new NamespacedKey(CrumbMMO.getInstance(), "prevent-place");
+    public static NamespacedKey hasSkin = new NamespacedKey(CrumbMMO.getInstance(), "has-skin");
+    public static NamespacedKey atkSpeedKey = new NamespacedKey(CrumbMMO.getInstance(), "atk-speed");
 
 
 

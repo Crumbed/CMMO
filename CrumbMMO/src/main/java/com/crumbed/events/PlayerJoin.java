@@ -54,10 +54,18 @@ public class PlayerJoin implements Listener {
         int cDmg = data.get(critDmgKey, PersistentDataType.INTEGER);
         float cChance = data.get(critChanceKey, PersistentDataType.FLOAT);
         float speed = (float) player.getAttribute(Attribute.GENERIC_MOVEMENT_SPEED).getBaseValue();
+        float atkSpeed = (float) player.getAttribute(Attribute.GENERIC_ATTACK_SPEED).getBaseValue();
+
+        player.getAttribute(Attribute.GENERIC_ARMOR).setBaseValue(-1000);
+        player.getAttribute(Attribute.GENERIC_ARMOR_TOUGHNESS).setBaseValue(-1000);
+        player.getAttribute(Attribute.GENERIC_KNOCKBACK_RESISTANCE).setBaseValue(-1000);
+
+        player.setHealthScale(10);
 
         statsManager.playerAddonStats.put(player.getUniqueId(), new Stats(true));
+        statsManager.playerHealthScales.put(player, player.getHealthScale());
 
-        statsManager.updateStats(player.getUniqueId(), new Stats(baseHealth, baseDefense, defense, baseMana, maxMana, mana, dmg, str, cDmg, cChance, speed));
+        statsManager.updateStats(player.getUniqueId(), new Stats(baseHealth, baseDefense, defense, baseMana, maxMana, mana, dmg, str, cDmg, cChance, speed, atkSpeed));
 
         itemManager.checkForOutdatedItems(player);
 

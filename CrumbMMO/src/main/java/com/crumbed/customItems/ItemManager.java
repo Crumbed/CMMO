@@ -6,20 +6,21 @@ import com.crumbed.abilities.AOTE;
 import com.crumbed.abilities.EnderRage;
 import com.crumbed.events.BlockPlace;
 import com.google.common.collect.ImmutableMultimap;
-import com.sun.tools.javac.tree.JCTree;
-import me.arcaniax.hdb.api.HeadDatabaseAPI;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
+import org.bukkit.attribute.Attribute;
+import org.bukkit.attribute.AttributeModifier;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.LeatherArmorMeta;
-import org.bukkit.material.MaterialData;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -28,9 +29,7 @@ import javax.swing.text.html.CSS;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
+import java.util.*;
 
 import static com.crumbed.CrumbMMO.itemReg;
 import static com.crumbed.CrumbMMO.headApi;
@@ -63,8 +62,7 @@ public class ItemManager {
             if (playerInv.getItem(i).getItemMeta().getPersistentDataContainer().get(idKey, PersistentDataType.STRING) != null) {
                 ItemStack item = playerInv.getItem(i);
                 ItemMeta meta = item.getItemMeta();
-                HashMap<Enchantment, Integer> enchants = null;
-                if (meta.hasEnchants()) enchants = (HashMap<Enchantment, Integer>) meta.getEnchants();
+                Map<Enchantment, Integer> enchants = meta.getEnchants();
                 PersistentDataContainer customMeta = meta.getPersistentDataContainer();
                 String id = customMeta.get(idKey, PersistentDataType.STRING);
                 if (!items.containsKey(id)) {
@@ -75,7 +73,7 @@ public class ItemManager {
 
                 if (!(item.getItemMeta().equals(CMMOItem.getItemMeta()))) {
                     item.setItemMeta(CMMOItem.getItemMeta());
-                    if (enchants != null) {
+                    if (!enchants.isEmpty()) {
                         item.addUnsafeEnchantments(enchants);
                     }
 
@@ -117,6 +115,8 @@ public class ItemManager {
             int hp = 0;
             int def = 0;
             int mana = 0;
+            float atkSpeed = 0.0f;
+            float speed = 0.0f;
             String headId = "-";
 
             String name = customMeta.get(nameKey, PersistentDataType.STRING);
@@ -138,6 +138,8 @@ public class ItemManager {
             if (customMeta.has(healthKey, PersistentDataType.INTEGER))      hp = customMeta.get(healthKey, PersistentDataType.INTEGER);
             if (customMeta.has(defenseKey, PersistentDataType.INTEGER))     def = customMeta.get(defenseKey, PersistentDataType.INTEGER);
             if (customMeta.has(manaKey, PersistentDataType.INTEGER))        mana = customMeta.get(manaKey, PersistentDataType.INTEGER);
+            if (customMeta.has(atkSpeedKey, PersistentDataType.FLOAT))      atkSpeed = customMeta.get(atkSpeedKey, PersistentDataType.FLOAT);
+            if (customMeta.has(speedKey, PersistentDataType.FLOAT))         speed = customMeta.get(speedKey, PersistentDataType.FLOAT);
 
             if (customMeta.has(abilityKey, PersistentDataType.STRING))      ability = customMeta.get(abilityKey, PersistentDataType.STRING);
             if (customMeta.has(manaCostKey, PersistentDataType.INTEGER))    manaCost = customMeta.get(manaCostKey, PersistentDataType.INTEGER);
@@ -155,6 +157,8 @@ public class ItemManager {
             if(hp != 0)                 config.set(configId+"health", hp);
             if(def != 0)                config.set(configId+"defense", def);
             if(mana != 0)               config.set(configId+"mana", mana);
+            if(atkSpeed != 0)           config.set(configId+"atk-speed", atkSpeed);
+            if(speed != 0)              config.set(configId+"speed", speed);
 
             if(lore != null)            config.set(configId+"lore", lore);
             if(!ability.equals("-"))    config.set(configId+"ability.name", ability);
@@ -205,6 +209,8 @@ public class ItemManager {
             int hp = 0;
             int def = 0;
             int mana = 0;
+            float atkSpeed = 0.0f;
+            float speed = 0.0f;
 
             String ability = "-";
             int mana_cost = 0;
@@ -215,6 +221,7 @@ public class ItemManager {
             String hexCode = "-";
             int placeable = 0;
             ArrayList<String> lore = new ArrayList<>();
+            ArrayList<String> enchants = new ArrayList<>();
 
             if(config.contains(configId+"color"))               hexCode = config.getString(configId+"color");
             if(config.contains(configId+"skull-id"))            headId = config.getString(configId+"skull-id");
@@ -227,10 +234,13 @@ public class ItemManager {
             if(config.contains(configId+"health"))              hp = config.getInt(configId+"health");
             if(config.contains(configId+"defense"))             def = config.getInt(configId+"defense");
             if(config.contains(configId+"mana"))                mana = config.getInt(configId+"mana");
+            if(config.contains(configId+"atk-speed"))           atkSpeed = (float) config.getDouble(configId+"atk-speed");
+            if(config.contains(configId+"speed"))               speed = (float) config.getDouble(configId+"speed");
 
             if(config.contains(configId+"ability.name"))        ability = config.getString(configId+"ability.name");
             if(config.contains(configId+"ability.mana-cost"))   mana_cost = config.getInt(configId+"ability.mana-cost");
             if(config.contains(configId+"lore"))                lore = (ArrayList<String>) config.getStringList(configId+"lore");
+            if(config.contains(configId+"enchants"))            enchants = (ArrayList<String>) config.getStringList(configId+"enchants");
 
             ItemStack item;
             if (material.equals("PLAYER_HEAD")) item = headApi.getItemHead(headId);
@@ -238,6 +248,12 @@ public class ItemManager {
             ItemMeta meta = item.getItemMeta();
             PersistentDataContainer customMeta = meta.getPersistentDataContainer();
 
+            if(atkSpeed == 0) {
+                if (type.equals("sword")) atkSpeed = 1.6f;
+                else if (type.equals("axe")) atkSpeed = 1.8f;
+                else if (type.equals("short_sword")) atkSpeed = 1.2f;
+                else if (type.equals("long_sword")) atkSpeed = 1.8f;
+            }
 
             ArrayList<String> itemLore = new ArrayList<>();
             String strLore = "-";
@@ -252,7 +268,7 @@ public class ItemManager {
                                   customMeta.set(critDmgKey, PersistentDataType.INTEGER, cDmg); }
             if (cChance != 0.0) { itemLore.add(ChatColor.GRAY+"Crit Chance: "+ChatColor.RED+"+"+(int)cChance+"%");
                                   customMeta.set(critChanceKey, PersistentDataType.FLOAT, (cChance/100)); }
-            if ((hp != 0 || def != 0 || mana != 0) && (dmg != 0 || str != 0 || cDmg != 0 || cChance != 0.0))
+            if ((hp != 0 || def != 0 || mana != 0 || atkSpeed != 0) && (dmg != 0 || str != 0 || cDmg != 0 || cChance != 0.0))
             {itemLore.add("");}
             if (hp != 0)        { itemLore.add(ChatColor.GRAY+"Health: "+ChatColor.GREEN+"+"+hp);
                                   customMeta.set(healthKey, PersistentDataType.INTEGER, hp); }
@@ -260,6 +276,10 @@ public class ItemManager {
                                   customMeta.set(defenseKey, PersistentDataType.INTEGER, def); }
             if (mana != 0)      { itemLore.add(ChatColor.GRAY+"Mana: "+ChatColor.GREEN+"+"+mana);
                                   customMeta.set(manaKey, PersistentDataType.INTEGER, mana); }
+            if (atkSpeed != 0)  { itemLore.add(ChatColor.GRAY+"Attack Speed: "+ChatColor.GREEN+"+"+atkSpeed);
+                                  customMeta.set(atkSpeedKey, PersistentDataType.FLOAT, atkSpeed); }
+            if (speed != 0)     { itemLore.add(ChatColor.GRAY+"Speed: "+ChatColor.GREEN+"+"+speed);
+                                  customMeta.set(speedKey, PersistentDataType.FLOAT, speed); }
             itemLore.add("");
             if (!lore.isEmpty()){
                 itemLore.addAll(lore);
@@ -281,6 +301,12 @@ public class ItemManager {
             meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
             meta.setUnbreakable(true);
             meta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE);
+
+            for (String ench : enchants) {
+                String enchant = ench.substring(0, ench.indexOf(":"));
+                int lvl = Integer.parseInt(ench.substring(ench.indexOf(":")+1));
+                meta.addEnchant(Enchantment.getByKey(NamespacedKey.minecraft(enchant)), lvl, true);
+            }
 
             customMeta.set              (idKey, PersistentDataType.STRING, id);
             customMeta.set              (nameKey, PersistentDataType.STRING, name);

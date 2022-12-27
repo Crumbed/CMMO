@@ -12,7 +12,7 @@
   <component name="McpModuleSettings">
     <option name="srgType" value="SRG" />
   </component>
-  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8">
+  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_16">
     <output url="file://$MODULE_DIR$/target/classes" />
     <output-test url="file://$MODULE_DIR$/target/test-classes" />
     <content url="file://$MODULE_DIR$">
@@ -92,8 +92,50 @@
     <orderEntry type="library" scope="PROVIDED" name="Maven: commons-codec:commons-codec:1.11" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.httpcomponents:httpcore:4.4.14" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.slf4j:jcl-over-slf4j:1.7.32" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: com.wolfyscript.customcrafting:customcrafting-spigot:3.16.5.0" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: com.wolfyscript.wolfyutilities:wolfyutilities:3.16.1.0" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: com.wolfyscript.wolfyutilities:core:3.16.1.0" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.bstats:bstats-bukkit:2.2.1" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.bstats:bstats-base:2.2.1" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.reflections:reflections:0.10.2" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.javassist:javassist:3.28.0-GA" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.13.1" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.13.1" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: com.fasterxml.jackson.core:jackson-core:2.13.1" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: net.kyori:adventure-api:4.9.3" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: net.kyori:adventure-key:4.9.3" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: net.kyori:examination-api:1.3.0" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: net.kyori:examination-string:1.3.0" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: net.kyori:adventure-platform-bukkit:4.0.1" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: net.kyori:adventure-platform-api:4.0.1" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: net.kyori:adventure-text-serializer-bungeecord:4.0.1" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: net.kyori:adventure-text-serializer-legacy:4.9.1" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: net.kyori:adventure-nbt:4.9.1" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: net.kyori:adventure-text-serializer-gson:4.9.1" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: net.kyori:adventure-text-serializer-gson-legacy-impl:4.9.1" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: net.kyori:adventure-platform-facet:4.0.1" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: net.kyori:adventure-platform-viaversion:4.0.1" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: net.kyori:adventure-text-minimessage:4.1.0-SNAPSHOT" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: com.wolfyscript.wolfyutilities:nmsutil-artifact:3.16.1.0" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: com.wolfyscript.wolfyutilities:nmsutil-v1_15_R1:3.16.1.0" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: com.wolfyscript.wolfyutilities:nmsutil-v1_16_R1:3.16.1.0" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: com.wolfyscript.wolfyutilities:nmsutil-v1_16_R2:3.16.1.0" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: com.wolfyscript.wolfyutilities:nmsutil-v1_16_R3:3.16.1.0" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: com.wolfyscript.wolfyutilities:nmsutil-v1_17_R1_P0:3.16.1.0" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: com.wolfyscript.wolfyutilities:nmsutil-v1_17_R1_P1:3.16.1.0" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: com.wolfyscript.wolfyutilities:nmsutil-v1_18_R1_P0:3.16.1.0" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: com.wolfyscript.wolfyutilities:nmsutil-v1_18_R1_P1:3.16.1.0" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: com.wolfyscript.wolfyutilities:plugin-compatibility-artifact:3.16.1.0" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: com.wolfyscript.wolfyutilities:itemsadder:3.16.1.0" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: com.wolfyscript.wolfyutilities:oraxen:3.16.1.0" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: com.wolfyscript.wolfyutilities:magic:3.16.1.0" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: com.wolfyscript.wolfyutilities:mythicmobs:3.16.1.0" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: com.wolfyscript.wolfyutilities:mmoitems:3.16.1.0" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: com.wolfyscript.wolfyutilities:eco:3.16.1.0" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: net.luckperms:api:5.4" level="project" />
     <orderEntry type="library" name="Maven: org.jetbrains:annotations:23.0.0" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: com.arcaniax:HeadDatabase-API:1.3.1" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: com.comphenix.protocol:ProtocolLib:4.7.0" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: net.bytebuddy:byte-buddy:1.11.0" level="project" />
   </component>
 </module>

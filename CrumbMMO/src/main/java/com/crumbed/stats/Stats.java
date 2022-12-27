@@ -17,6 +17,7 @@ public class Stats {
     private int critDamage;
     private float critChance;
     private float speed;
+    private float atkSpeed;
     private Stats lastAddStat = null;
 
     public Stats(boolean blankStat) {
@@ -33,6 +34,7 @@ public class Stats {
             critDamage = 0;
             critChance = 0.0f;
             speed = 0.0f;
+            atkSpeed = 0.0f;
         } else {
             baseHealth = 100;
             health = 0;
@@ -46,9 +48,10 @@ public class Stats {
             critDamage = 50;
             critChance = 0.3f;
             speed = 0.1f;
+            atkSpeed = 0.0f;
         }
     }
-    public Stats(int baseHealth, int baseDefense, int defense, int baseMana, int maxMana, int mana, int dmg, int str, int cDmg, float cChance, float speed) {
+    public Stats(int baseHealth, int baseDefense, int defense, int baseMana, int maxMana, int mana, int dmg, int str, int cDmg, float cChance, float speed, float atkSpeed) {
         this.baseHealth = baseHealth;
         health = 0;
         this.baseDefense = baseDefense;
@@ -61,9 +64,10 @@ public class Stats {
         this.critDamage = cDmg;
         this.critChance = cChance;
         this.speed = speed;
+        this.atkSpeed = atkSpeed;
     }
 
-    public Stats(int health, int defense, int mana, int dmg, int str, int cDmg, float cChance, float speed) {
+    public Stats(int health, int defense, int mana, int dmg, int str, int cDmg, float cChance, float speed, float atkSpeed) {
         baseHealth = 0;
         this.health = health;
         baseDefense = 0;
@@ -76,6 +80,7 @@ public class Stats {
         this.critDamage = cDmg;
         this.critChance = cChance;
         this.speed = speed;
+        this.atkSpeed = atkSpeed;
     }
 
     public int getBaseHealth()      { return baseHealth; }
@@ -90,6 +95,7 @@ public class Stats {
     public int getCritDamage()      { return critDamage; }
     public float getCritChance()    { return critChance; }
     public float getSpeed()         { return speed; }
+    public float getAtkSpeed()         { return atkSpeed; }
 
     public void setBaseHealth(int health)       { this.baseHealth = health; }
     public void setHealth(int health)           { this.health = health; }
@@ -103,6 +109,7 @@ public class Stats {
     public void setCritDamage (int cDmg)        { this.critDamage = cDmg; }
     public void setCritChance (float cChance )  { this.critChance = cChance; }
     public void setSpeed (float speed)          { this.speed = speed; }
+    public void setAtkSpeed (float atkSpeed)    { this.atkSpeed = atkSpeed; }
 
 
     public void addStats (Stats stats, Player player) {
@@ -117,6 +124,7 @@ public class Stats {
         this.critDamage     += stats.getCritDamage();
         this.critChance     += stats.getCritChance();
         this.speed          = stats.getSpeed();
+        this.atkSpeed       += stats.getAtkSpeed();
 
         player.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(player.getAttribute(Attribute.GENERIC_MAX_HEALTH).getBaseValue() + health);
         player.getAttribute(Attribute.GENERIC_MOVEMENT_SPEED).setBaseValue(player.getAttribute(Attribute.GENERIC_MOVEMENT_SPEED).getBaseValue() + speed);
@@ -133,6 +141,7 @@ public class Stats {
         this.critDamage     -= stats.getCritDamage();
         this.critChance     -= stats.getCritChance();
         this.speed          = stats.getSpeed();
+        this.atkSpeed       -= stats.getAtkSpeed();
 
         player.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(player.getAttribute(Attribute.GENERIC_MAX_HEALTH).getBaseValue() - health);
         player.getAttribute(Attribute.GENERIC_MOVEMENT_SPEED).setBaseValue(player.getAttribute(Attribute.GENERIC_MOVEMENT_SPEED).getBaseValue() - speed);

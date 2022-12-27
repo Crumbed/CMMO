@@ -29,11 +29,14 @@ public class SetStats {
 
         int baseHealth = playerStats.getBaseHealth();
         playerStats.setBaseHealth(newVal);
+
+        /*
         if (baseHealth > newVal) {
             player.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(player.getAttribute(Attribute.GENERIC_MAX_HEALTH).getBaseValue() + (baseHealth - newVal));
         } else {
             player.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(player.getAttribute(Attribute.GENERIC_MAX_HEALTH).getBaseValue() + (newVal - baseHealth));
         }
+         */
 
         statsManager.updateStats(player.getUniqueId(), playerStats);
 
