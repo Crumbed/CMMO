@@ -1,54 +1,53 @@
-D:\MY PLUGINS\CrumbMMO\src\main\java\com\crumbed\utils\PacketManager1_19_R1.java
-D:\MY PLUGINS\CrumbMMO\src\main\java\com\crumbed\events\BlockPlace.java
-D:\MY PLUGINS\CrumbMMO\src\main\java\com\crumbed\commands\SetStats.java
-D:\MY PLUGINS\CrumbMMO\src\main\java\com\crumbed\crafting\RecipeRegistry.java
-D:\MY PLUGINS\CrumbMMO\src\main\java\com\crumbed\commands\Skins.java
-D:\MY PLUGINS\CrumbMMO\src\main\java\com\crumbed\customMobs\CMMOEntity.java
-D:\MY PLUGINS\CrumbMMO\src\main\java\com\crumbed\utils\PacketManager.java
-D:\MY PLUGINS\CrumbMMO\src\main\java\com\crumbed\commands\Reload.java
-D:\MY PLUGINS\CrumbMMO\src\main\java\com\crumbed\commands\Trails.java
-D:\MY PLUGINS\CrumbMMO\src\main\java\com\crumbed\abilities\Ability.java
-D:\MY PLUGINS\CrumbMMO\src\main\java\com\crumbed\guis\TrailsGui.java
-D:\MY PLUGINS\CrumbMMO\src\main\java\com\crumbed\crafting\CombinedIngredient.java
-D:\MY PLUGINS\CrumbMMO\src\main\java\com\crumbed\customMobs\SpawnMob.java
-D:\MY PLUGINS\CrumbMMO\src\main\java\com\crumbed\events\PlayerMovement.java
-D:\MY PLUGINS\CrumbMMO\src\main\java\com\crumbed\abilities\AOTE.java
-D:\MY PLUGINS\CrumbMMO\src\main\java\com\crumbed\crafting\CMMORecipe.java
-D:\MY PLUGINS\CrumbMMO\src\main\java\com\crumbed\utils\Effects.java
-D:\MY PLUGINS\CrumbMMO\src\main\java\com\crumbed\crafting\CountIngredient.java
-D:\MY PLUGINS\CrumbMMO\src\main\java\com\crumbed\utils\ParticleData.java
-D:\MY PLUGINS\CrumbMMO\src\main\java\com\crumbed\utils\ConfigurationSerializableIntArray.java
-D:\MY PLUGINS\CrumbMMO\src\main\java\com\crumbed\commands\StatsTabComplete.java
-D:\MY PLUGINS\CrumbMMO\src\main\java\com\crumbed\customItems\ItemRegistry.java
-D:\MY PLUGINS\CrumbMMO\src\main\java\com\crumbed\enchants\EnchantWrapper.java
-D:\MY PLUGINS\CrumbMMO\src\main\java\com\crumbed\guis\SkinsGui.java
-D:\MY PLUGINS\CrumbMMO\src\main\java\com\crumbed\customItems\ItemManager.java
-D:\MY PLUGINS\CrumbMMO\src\main\java\com\crumbed\utils\NBTUtil.java
-D:\MY PLUGINS\CrumbMMO\src\main\java\com\crumbed\utils\BooleanBinaryOpterator.java
-D:\MY PLUGINS\CrumbMMO\src\main\java\com\crumbed\commands\ResetStats.java
-D:\MY PLUGINS\CrumbMMO\src\main\java\com\crumbed\events\PlayerLeave.java
-D:\MY PLUGINS\CrumbMMO\src\main\java\com\crumbed\stats\StatsManager.java
-D:\MY PLUGINS\CrumbMMO\src\main\java\com\crumbed\abilities\EnderRage.java
-D:\MY PLUGINS\CrumbMMO\src\main\java\com\crumbed\commands\StatsCmd.java
-D:\MY PLUGINS\CrumbMMO\src\main\java\com\crumbed\enchants\CustomEnchants.java
-D:\MY PLUGINS\CrumbMMO\src\main\java\com\crumbed\guis\TrailsEvent.java
-D:\MY PLUGINS\CrumbMMO\src\main\java\com\crumbed\commands\CGive.java
-D:\MY PLUGINS\CrumbMMO\src\main\java\com\crumbed\utils\ConfigurationSerializableByteArray.java
-D:\MY PLUGINS\CrumbMMO\src\main\java\com\crumbed\utils\ActionBarManager.java
-D:\MY PLUGINS\CrumbMMO\src\main\java\com\crumbed\commands\Craft.java
-D:\MY PLUGINS\CrumbMMO\src\main\java\com\crumbed\events\Damage.java
-D:\MY PLUGINS\CrumbMMO\src\main\java\com\crumbed\events\PlayerJoin.java
-D:\MY PLUGINS\CrumbMMO\src\main\java\com\crumbed\utils\ConfigurationSerializableLongArray.java
-D:\MY PLUGINS\CrumbMMO\src\main\java\com\crumbed\CrumbMMO.java
-D:\MY PLUGINS\CrumbMMO\src\main\java\com\crumbed\customMobs\MobManager.java
-D:\MY PLUGINS\CrumbMMO\src\main\java\com\crumbed\utils\CooldownManager.java
-D:\MY PLUGINS\CrumbMMO\src\main\java\com\crumbed\utils\NMSAccessException.java
-D:\MY PLUGINS\CrumbMMO\src\main\java\com\crumbed\crafting\InjectedIngredient.java
-D:\MY PLUGINS\CrumbMMO\src\main\java\com\crumbed\utils\NBTSerializable.java
-D:\MY PLUGINS\CrumbMMO\src\main\java\com\crumbed\stats\Stats.java
-D:\MY PLUGINS\CrumbMMO\src\main\java\com\crumbed\crafting\CountRecipe.java
-D:\MY PLUGINS\CrumbMMO\src\main\java\com\crumbed\guis\CraftingGui.java
-D:\MY PLUGINS\CrumbMMO\src\main\java\com\crumbed\commands\CGiveTabComplete.java
-D:\MY PLUGINS\CrumbMMO\src\main\java\com\crumbed\utils\ReflectionUtil.java
-D:\MY PLUGINS\CrumbMMO\src\main\java\com\crumbed\guis\SkinEvent.java
-D:\MY PLUGINS\CrumbMMO\src\main\java\com\crumbed\utils\Namespaces.java
+/Users/crumbed/Documents/GitHub/CMMO/CrumbMMO/src/main/java/com/crumbed/commands/StatsTabComplete.java
+/Users/crumbed/Documents/GitHub/CMMO/CrumbMMO/src/main/java/com/crumbed/events/Damage.java
+/Users/crumbed/Documents/GitHub/CMMO/CrumbMMO/src/main/java/com/crumbed/events/PlayerLeave.java
+/Users/crumbed/Documents/GitHub/CMMO/CrumbMMO/src/main/java/com/crumbed/crafting/Ingredients.java
+/Users/crumbed/Documents/GitHub/CMMO/CrumbMMO/src/main/java/com/crumbed/enchants/EnchantWrapper.java
+/Users/crumbed/Documents/GitHub/CMMO/CrumbMMO/src/main/java/com/crumbed/utils/ConfigurationSerializableLongArray.java
+/Users/crumbed/Documents/GitHub/CMMO/CrumbMMO/src/main/java/com/crumbed/commands/Craft.java
+/Users/crumbed/Documents/GitHub/CMMO/CrumbMMO/src/main/java/com/crumbed/utils/ConfigurationSerializableIntArray.java
+/Users/crumbed/Documents/GitHub/CMMO/CrumbMMO/src/main/java/com/crumbed/utils/NBTUtil.java
+/Users/crumbed/Documents/GitHub/CMMO/CrumbMMO/src/main/java/com/crumbed/utils/PacketManager1_19_R1.java
+/Users/crumbed/Documents/GitHub/CMMO/CrumbMMO/src/main/java/com/crumbed/commands/Reload.java
+/Users/crumbed/Documents/GitHub/CMMO/CrumbMMO/src/main/java/com/crumbed/utils/NBTSerializable.java
+/Users/crumbed/Documents/GitHub/CMMO/CrumbMMO/src/main/java/com/crumbed/commands/Skins.java
+/Users/crumbed/Documents/GitHub/CMMO/CrumbMMO/src/main/java/com/crumbed/utils/ConfigurationSerializableByteArray.java
+/Users/crumbed/Documents/GitHub/CMMO/CrumbMMO/src/main/java/com/crumbed/commands/ResetStats.java
+/Users/crumbed/Documents/GitHub/CMMO/CrumbMMO/src/main/java/com/crumbed/customMobs/CMMOZombie.java
+/Users/crumbed/Documents/GitHub/CMMO/CrumbMMO/src/main/java/com/crumbed/commands/StatsCmd.java
+/Users/crumbed/Documents/GitHub/CMMO/CrumbMMO/src/main/java/com/crumbed/guis/TrailsEvent.java
+/Users/crumbed/Documents/GitHub/CMMO/CrumbMMO/src/main/java/com/crumbed/utils/Effects.java
+/Users/crumbed/Documents/GitHub/CMMO/CrumbMMO/src/main/java/com/crumbed/utils/Namespaces.java
+/Users/crumbed/Documents/GitHub/CMMO/CrumbMMO/src/main/java/com/crumbed/guis/SkinsGui.java
+/Users/crumbed/Documents/GitHub/CMMO/CrumbMMO/src/main/java/com/crumbed/utils/BooleanBinaryOpterator.java
+/Users/crumbed/Documents/GitHub/CMMO/CrumbMMO/src/main/java/com/crumbed/customItems/ItemManager.java
+/Users/crumbed/Documents/GitHub/CMMO/CrumbMMO/src/main/java/com/crumbed/utils/ReflectionUtil.java
+/Users/crumbed/Documents/GitHub/CMMO/CrumbMMO/src/main/java/com/crumbed/abilities/AOTE.java
+/Users/crumbed/Documents/GitHub/CMMO/CrumbMMO/src/main/java/com/crumbed/guis/SkinEvent.java
+/Users/crumbed/Documents/GitHub/CMMO/CrumbMMO/src/main/java/com/crumbed/guis/TrailsGui.java
+/Users/crumbed/Documents/GitHub/CMMO/CrumbMMO/src/main/java/com/crumbed/utils/CooldownManager.java
+/Users/crumbed/Documents/GitHub/CMMO/CrumbMMO/src/main/java/com/crumbed/utils/ParticleData.java
+/Users/crumbed/Documents/GitHub/CMMO/CrumbMMO/src/main/java/com/crumbed/stats/Stats.java
+/Users/crumbed/Documents/GitHub/CMMO/CrumbMMO/src/main/java/com/crumbed/commands/CGive.java
+/Users/crumbed/Documents/GitHub/CMMO/CrumbMMO/src/main/java/com/crumbed/customMobs/MobManager.java
+/Users/crumbed/Documents/GitHub/CMMO/CrumbMMO/src/main/java/com/crumbed/customMobs/CMMOEntity.java
+/Users/crumbed/Documents/GitHub/CMMO/CrumbMMO/src/main/java/com/crumbed/utils/PacketManager.java
+/Users/crumbed/Documents/GitHub/CMMO/CrumbMMO/src/main/java/com/crumbed/abilities/EnderRage.java
+/Users/crumbed/Documents/GitHub/CMMO/CrumbMMO/src/main/java/com/crumbed/crafting/CMMORecipe.java
+/Users/crumbed/Documents/GitHub/CMMO/CrumbMMO/src/main/java/com/crumbed/commands/Trails.java
+/Users/crumbed/Documents/GitHub/CMMO/CrumbMMO/src/main/java/com/crumbed/events/PlayerMovement.java
+/Users/crumbed/Documents/GitHub/CMMO/CrumbMMO/src/main/java/com/crumbed/utils/ActionBarManager.java
+/Users/crumbed/Documents/GitHub/CMMO/CrumbMMO/src/main/java/com/crumbed/commands/CGiveTabComplete.java
+/Users/crumbed/Documents/GitHub/CMMO/CrumbMMO/src/main/java/com/crumbed/events/BlockPlace.java
+/Users/crumbed/Documents/GitHub/CMMO/CrumbMMO/src/main/java/com/crumbed/enchants/CustomEnchants.java
+/Users/crumbed/Documents/GitHub/CMMO/CrumbMMO/src/main/java/com/crumbed/events/PlayerJoin.java
+/Users/crumbed/Documents/GitHub/CMMO/CrumbMMO/src/main/java/com/crumbed/stats/StatsManager.java
+/Users/crumbed/Documents/GitHub/CMMO/CrumbMMO/src/main/java/com/crumbed/customMobs/SpawnMob.java
+/Users/crumbed/Documents/GitHub/CMMO/CrumbMMO/src/main/java/com/crumbed/events/SpawnMob.java
+/Users/crumbed/Documents/GitHub/CMMO/CrumbMMO/src/main/java/com/crumbed/utils/NMSAccessException.java
+/Users/crumbed/Documents/GitHub/CMMO/CrumbMMO/src/main/java/com/crumbed/guis/CraftingGui.java
+/Users/crumbed/Documents/GitHub/CMMO/CrumbMMO/src/main/java/com/crumbed/commands/SetStats.java
+/Users/crumbed/Documents/GitHub/CMMO/CrumbMMO/src/main/java/com/crumbed/crafting/RecipeRegistry.java
+/Users/crumbed/Documents/GitHub/CMMO/CrumbMMO/src/main/java/com/crumbed/CrumbMMO.java
+/Users/crumbed/Documents/GitHub/CMMO/CrumbMMO/src/main/java/com/crumbed/abilities/Ability.java
+/Users/crumbed/Documents/GitHub/CMMO/CrumbMMO/src/main/java/com/crumbed/customItems/ItemRegistry.java

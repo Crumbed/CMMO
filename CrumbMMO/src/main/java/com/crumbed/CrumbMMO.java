@@ -39,7 +39,6 @@ public final class CrumbMMO extends JavaPlugin implements Listener {
     public static ItemRegistry itemReg;
     public static MobManager mobManager;
     public static HeadDatabaseAPI headApi;
-    public static SkinsGui skinsGui;
     public static RecipeRegistry recipeRegistry;
     public static ProtocolManager manager;
 
@@ -66,8 +65,6 @@ public final class CrumbMMO extends JavaPlugin implements Listener {
         mobManager.getMobConfig().addDefault("registered-ids", new ArrayList<String>());
         mobManager.getMobConfig().options().copyDefaults(true);
         mobManager.saveMobConfig();
-
-        skinsGui = new SkinsGui();
 
         TrailsGui trailsGui = new TrailsGui();
         trailsGui.register();

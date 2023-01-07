@@ -73,7 +73,7 @@
                         </goals>
                         <configuration>
                             <createDependencyReducedPom>false</createDependencyReducedPom>
-                            <outputFile>D:\MY PLUGINS\Jars\CrumbMMO.jar</outputFile>
+                            <outputFile>/Users/crumbed/Documents/PluginJars/CrumbMMO.jar</outputFile>
                         </configuration>
                     </execution>
                 </executions>

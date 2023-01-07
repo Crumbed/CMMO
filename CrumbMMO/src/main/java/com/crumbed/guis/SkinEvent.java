@@ -2,15 +2,19 @@ package com.crumbed.guis;
 
 import com.crumbed.utils.PacketManager;
 import org.bukkit.ChatColor;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 
@@ -35,7 +39,7 @@ public class SkinEvent implements Listener {
 
     @EventHandler
     public void click(InventoryClickEvent event) {
-        if (!event.getInventory().equals(SkinsGui.INV)) return;
+        if (!event.getInventory().equals(SkinsGui.playerGuis.get((Player)event.getWhoClicked()))) return;
         Player player = (Player) event.getWhoClicked();
         if (event.getView().getType() == InventoryType.PLAYER) return;
         ItemStack clickedItem = event.getCurrentItem();
@@ -65,9 +69,11 @@ public class SkinEvent implements Listener {
             if (skins.get(skinId).charAt(0) == '#') {
 
             } else {
-                skinnedItem = headApi.getItemHead(skins.get(skinId));
-                skinnedItem.setItemMeta(mainItem.getItemMeta());
-                skinnedItem.getItemMeta().getPersistentDataContainer().set(hasSkin, PersistentDataType.INTEGER, 1);
+
+                skinnedItem = applySkin(mainItem, skins.get(skinId));
+
+                //skinnedItem.setItemMeta(mainItem.getItemMeta());
+                //skinnedItem.getItemMeta().getPersistentDataContainer().set(skinKey, PersistentDataType.STRING, skins.get(skinId));
             }
 
             event.getInventory().setItem(16, skinnedItem);
@@ -76,6 +82,19 @@ public class SkinEvent implements Listener {
 
         }
 
+    }
+
+    public ItemStack applySkin (ItemStack item, String skinId) {
+        if (skinId.charAt(0) == '#') {
+            return new ItemStack(Material.ACACIA_BOAT);
+        }
+        ItemStack skinnedItem = headApi.getItemHead(skinId);
+        ItemMeta meta = item.getItemMeta();
+        ArrayList<String> lore = (ArrayList<String>) meta.getLore();
+        lore.add(ChatColor.DARK_GRAY+""+ChatColor.ITALIC+"* Skinned *");
+        PersistentDataContainer customData = meta.getPersistentDataContainer();
+
+        return skinnedItem;
     }
 
 }

@@ -58,13 +58,14 @@ public class RecipeRegistry {
         ArrayList<String> ids = (ArrayList<String>) config.getStringList("registered-ids");
 
         for (String id : ids) {
-            String configId = id+".";
-            String group = config.getString(configId+"namespace");
-            String type = config.getString(configId+"type");
-            int resultAmount = config.getInt(configId+"result-amount");
-            String resultId = config.getString(configId+"result-id");
-            ArrayList<String> recMaterials = (ArrayList<String>) config.getStringList(configId+"recipe");
-            ArrayList<Integer> matCounts = (ArrayList<Integer>) config.getIntegerList(configId+"amounts");
+            String configId                     = id+".";
+            String group                        = config.getString(configId+"namespace");
+            String type                         = config.getString(configId+"type");
+            int resultAmount                    = config.getInt(configId+"result-amount");
+            String resultId                     = config.getString(configId+"result-id");
+
+            ArrayList<String> recMaterials      = (ArrayList<String>) config.getStringList(configId+"recipe");
+            ArrayList<Integer> matCounts        = (ArrayList<Integer>) config.getIntegerList(configId+"amounts");
 
             ArrayList<ItemStack> mats = new ArrayList<>();
 

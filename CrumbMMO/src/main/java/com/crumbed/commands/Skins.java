@@ -18,8 +18,9 @@ public class Skins implements CommandExecutor {
         Player player = (Player) sender;
         if (!player.hasPermission("cmmo.skins")) return true;
 
-        player.openInventory(SkinsGui.INV);
+        SkinsGui gui = new SkinsGui(player);
 
+        player.openInventory(gui.getInv());
 
         return true;
     }
