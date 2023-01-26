@@ -55,3 +55,20 @@ With this plugin you can easily add new items to the game by going to `plugins/C
     type: sword
     material: DIAMOND_SWORD
   ```
+
+# Custom Stats:
+
+The plugin adds an entire new stats system to the game, here is what they do:
+
+* `damage` Is the base damage that you will deal without any modifiers
+* `strength` Is a multiplier to your damage
+* `crit damage` Works the same as `strength` but is only used when you deal a critical hit
+* `crit chance` Is the % chance that you will land a critical hit
+* `health` I don't need to explain this
+* `mana` Works kind of like health but is used for magicial items (Don't really exist yet)
+
+The damage calculation is as follows:
+`(5 + damage) * (1 + (strength / 100) * (1 + (crit damage / 100)))`
+
+Defense reduction is:
+`incoming-damage * (defense / (defense + 100))`
